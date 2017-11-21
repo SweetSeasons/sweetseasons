@@ -6,9 +6,14 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const flash = require('connect-flash');
 
-const users = require('./routes/users');
 const authRoute = require('./routes/auth');
+const profileRoute = require('./routes/profile');
 
 mongoose.connect('mongodb://localhost/season', {useMongoclient: true});
 
@@ -28,10 +33,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
 app.set('layout', 'layouts/main-layout');
 
-// routes
+app.use(session({
+  secret: 'passport-local-strategy',
+  resave: true,
+  saveUninitialized: true,
+  store: new MongoStore( { mongooseConnection: mongoose.connection })
+}));
+
+app.use(flash());
+require('./passport')(app);
 
 app.use('/', authRoute);
-app.use('/users', users);
+app.use('/profile', profileRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
