@@ -4,6 +4,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 const passport = require('passport');
+const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 
 //Controlador para la página de inicio y Signup
 authRoutes.get('/', (req, res, next) => {
@@ -13,7 +14,7 @@ authRoutes.get('/', (req, res, next) => {
 });
 
 //Post para recoger los datos del formulario de Signup
-authRoutes.post('/', (req, res, next) => {
+authRoutes.post('/', ensureLoggedOut(), (req, res, next) => {
   const {name, password, email, foodProfile} = req.body;
   if(name !== '' && password !== '' && email !== ''){
     User.findOne({name}, 'name')
@@ -50,20 +51,29 @@ authRoutes.post('/', (req, res, next) => {
 });
 
 //Controlador para visualizar Login
-authRoutes.get('/login', (req, res, next) => {
+authRoutes.get('/login', ensureLoggedOut(), (req, res, next) => {
   res.render('login');
 });
 
 //Post para realizar login
-authRoutes.post('/login', passport.authenticate('local', {
+authRoutes.post('/login', ensureLoggedOut(), passport.authenticate('local', {
   successRedirect: '/main',
   failureRedirect: '/login',
   failureFlash: true,
   passReqToCallback: true
 }));
 
-authRoutes.get('/main', (req, res, next) => {
-  res.render('main');
+//Controlador para visualizar la página principal
+authRoutes.get('/main', ensureLoggedIn(), (req, res, next) => {
+  res.render('main', {
+    user: req.user
+  });
+});
+
+authRoutes.get('/logout', ensureLoggedIn(), (req, res, next) => {
+  req.logout();
+  req.session = null; // --> Esto hay que cambiarlo
+  res.redirect('/login');
 });
 
 module.exports = authRoutes;
