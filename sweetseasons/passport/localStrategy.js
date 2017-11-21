@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 
 //Necesito darle unas vueltas a esto para acabar de entenderlo
 passport.use(new LocalStrategy((username, password, next) => {
-  console.log('Llega hasta aqui');
   User.findOne({name:username}, (err, user) => {
     if(err){return next (err);
     }
