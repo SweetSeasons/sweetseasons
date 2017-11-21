@@ -1,0 +1,25 @@
+
+<h1>WELCOME TO CLASH OF DESSERTS!!!!!</h1>
+<h2>Register and enjoy of a sweet surprise every day!</h2>
+<% if(errorMessage){ %>
+  <h4><%= errorMessage %></h4>
+<% } %>
+<form action="/" method="POST">
+  <label for="name">Name</label>
+  <input id="name" type="text" name="name" placeholder="Your name!">
+  <br><br>
+  <label for="password">Password</label>
+  <input id="password" type="password" name="password" placeholder="Your password">
+  <br><br>
+  <label for="email">Email</label>
+  <input id="email" type="email" name="email" placeholder="Your email">
+  <br><br>
+  <label for="foodProfile">Food Profile</label>
+  <select name="foodProfile">
+    <option value="vegan">Vegan</option>
+    <option value="veggie">Veggie</option>
+  </select>
+  <button>Create!</button>
+</form>
+
+<h3>U have an account? Then <a href="/login">login!</a></h3>
