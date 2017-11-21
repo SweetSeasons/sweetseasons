@@ -3,6 +3,7 @@ const authRoutes = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
+const passport = require('passport');
 
 //Controlador para la página de inicio y Signup
 authRoutes.get('/', (req, res, next) => {
@@ -51,6 +52,18 @@ authRoutes.post('/', (req, res, next) => {
 //Controlador para visualizar Login
 authRoutes.get('/login', (req, res, next) => {
   res.render('login');
+});
+
+//Post para realizar login
+authRoutes.post('/login', passport.authenticate('local', {
+  successRedirect: '/main',
+  failureRedirect: '/login',
+  failureFlash: true,
+  passReqToCallback: true
+}));
+
+authRoutes.get('/main', (req, res, next) => {
+  res.render('main');
 });
 
 module.exports = authRoutes;
