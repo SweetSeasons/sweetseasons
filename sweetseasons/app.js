@@ -28,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
 app.set('layout', 'layouts/main-layout');
 
+// routes
+
 app.use('/', authRoute);
 app.use('/users', users);
 

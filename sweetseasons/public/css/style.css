@@ -6,3 +6,46 @@ body {
 a {
   color: #00B7FF;
 }
+
+/*----------------signUp page----------------*/
+
+.signUp{
+  text-align: center;
+}
+.signUp>article{
+  display: inline-block;
+  width: 40%;
+  height:500px;
+  background: #9BC7D0;
+  vertical-align: top;
+  text-align: left;
+  padding: 2%;
+  color: #FFFFFF;
+}
+.signUp article:first-of-type{
+  padding-top: 5%;
+}
+.signUp label{
+  color: white;
+  font-size: 1.5em;
+}
+.signUp input{
+  height: 50px;
+}
+.signUp select{
+  margin-bottom: 50px;
+}
+.signUp button{
+  padding: 5px 30%;
+}
+.signUp>div{
+  background: red;
+  width: 10%;
+  height: 20px
+}
+.signUp h4 a{
+  color: #6A818B;
+}
+
+
+}
