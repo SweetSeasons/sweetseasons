@@ -11,14 +11,13 @@ const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
+require('dotenv').config();
 
 const authRoute = require('./routes/auth');
 const profileRoute = require('./routes/profile');
 const calendarRoute = require('./routes/calendar');
 
-
-
-mongoose.connect('mongodb://localhost/season', {useMongoclient: true});
+mongoose.connect(process.env.MONGO_URL, {useMongoclient: true});
 
 const app = express();
 
@@ -37,7 +36,7 @@ app.use(expressLayouts);
 app.set('layout', 'layouts/main-layout');
 
 app.use(session({
-  secret: 'passport-local-strategy',
+  secret: process.env.SUPER_SECRET,
   resave: true,
   saveUninitialized: true,
   store: new MongoStore( { mongooseConnection: mongoose.connection })

@@ -6,4 +6,17 @@
 <h5>Leagues: <%= user.leagues %></h5>
 <h6><em>About me: <%= user.about %></em></h6>
 <br><br>
-<a href="/profile/edit/<%= user.id %>">You wanna some change?, Edit your profile!</a>
+<% if(userActive.id == user.id){ %>
+  <a href="/profile/edit/<%= user.id %>">You wanna some change?, Edit your profile!</a>
+<% } else{ %>
+  <a href="/profile/add/<%= user.id %>">Wanna be friend of <%= user.name %>? Add to your friend list! </a>
+<% } %>
+|
+<a href="/main">Home!</a>
+<br><br>
+<h4>FRIENDS</h4>
+<ul>
+  <% user.friends.forEach(e => { %>
+    <a href="#"><li><%= e %></li></a>
+  <% }) %>
+</ul>
