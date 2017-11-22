@@ -4,10 +4,7 @@ const Schema = mongoose.Schema;
 const groupSchema = new Schema({
   name: String,
   time: Number,
-  recipe: {
-    type: Schema.Type.ObjectId,
-    ref: 'Recipe'
-  }
+  recipe: {type: Schema.Types.ObjectId,ref: 'Recipe'}
 });
 
 module.exports = mongoose.model('Group', groupSchema);

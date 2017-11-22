@@ -1,4 +1,13 @@
-<h2>MAIN PAGE!</h2>
+<h2>Sweet Season</h2>
+<%- include('partials/partial.ejs')%>
+<div class="container-fluid">
 <h4>Bienvenido <%= user.name %>!</h4>
-
-<a href="/profile">Go to your profile</a><a href="/login">Log out</a>
+<div class="row">
+  <div class="col-xs-12 col-md-12 clearfix main"><a href="#">Single</a></div>
+  <div class="col-xs-12 col-md-12 clearfix main"><a href="/calendar">Season</a></div>
+</div>
+<div>
+  <a class="btn btn-info" href="/profile">Your profile</a>
+  <a class="btn btn-info" href="/login">Log out</a>
+</div>
+</div>

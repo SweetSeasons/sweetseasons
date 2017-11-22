@@ -1,51 +1,112 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 a {
   color: #00B7FF;
 }
+/*----------------nav navbar----------------*/
 
-/*----------------signUp page----------------*/
 
-.signUp{
-  text-align: center;
-}
-.signUp>article{
-  display: inline-block;
-  width: 40%;
-  height:500px;
+/*----------------signUp page and login----------------*/
+.signUp .col-sm-9, .login .col-sm-6{
+  color: #ffff;
   background: #9BC7D0;
-  vertical-align: top;
-  text-align: left;
-  padding: 2%;
-  color: #FFFFFF;
+  margin: 50px auto;
+  padding: 4%;
 }
-.signUp article:first-of-type{
-  padding-top: 5%;
+.signUp h1{
+  font-size: 2em;
+  margin-bottom: 20px;
 }
-.signUp label{
-  color: white;
+.signUp h2{
+  margin-bottom: 20px;
+}
+.signUp h3{
   font-size: 1.5em;
 }
-.signUp input{
-  height: 50px;
+.signUp img{
+  float: right;
+  width: 35%;
 }
-.signUp select{
-  margin-bottom: 50px;
+.col-sm-6 .btn-info{
+  width: 50%;
+  margin: 20px 25%;
 }
-.signUp button{
-  padding: 5px 30%;
+
+/*----------------Main----------------*/
+.main{
+height: 200px;
+text-align: center;
 }
-.signUp>div{
-  background: red;
-  width: 10%;
-  height: 20px
+.main:first-of-type{
+background: #69818C;
+background-image: url('../img/donut.png');
+background-repeat: no-repeat;
+background-position: right;
+background-size: auto;
 }
-.signUp h4 a{
-  color: #6A818B;
+.main:nth-of-type(2){
+background: #BEB6CF;
+background-image: url('../img/bowl.png');
+background-repeat: no-repeat;
+background-position: left;
+background-size: contain;
+}
+.main:first-of-type img, .main:last-of-type img{
+width: 14%;
+}
+.main:first-of-type img{
+float: right;
+margin-right: 20%;
+}
+.main:last-of-type img{
+float: left;
+margin-left: 20%;
+}
+.clearfix{
+  clear: both;
+}
+.main a{
+  font-size: 3em;
+  color: #fff;
+}
+.container-fluid div:nth-child(3){
+  text-align: center;
+  margin-top:20px;
+}
+
+/*----------------Calendar----------------*/
+.calendar{
+  text-align: center;
+  font-size: 3em;
+}
+.calendar .day  p{
+  color: #EED1AE;
+  font-size: 0.3em;
+}
+.day{
+  text-align: center;
+}
+.calendar .day{
+  background: #B04A3C;
+  margin: 20px 0 20px 5%;
+  height: 100px;
+}
+
+.day a{
+  color: #EED1AE;
 }
 
 
+/*----------------a----------------*/
+
+a{
+  text-decoration: none;
+  color: #69818C;
+}
+a:hover{
+  text-decoration: none;
+  color: #FFFF;
 }

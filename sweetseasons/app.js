@@ -14,6 +14,9 @@ const flash = require('connect-flash');
 
 const authRoute = require('./routes/auth');
 const profileRoute = require('./routes/profile');
+const calendarRoute = require('./routes/calendar');
+
+
 
 mongoose.connect('mongodb://localhost/season', {useMongoclient: true});
 
@@ -45,6 +48,7 @@ require('./passport')(app);
 
 app.use('/', authRoute);
 app.use('/profile', profileRoute);
+app.use('/calendar', calendarRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

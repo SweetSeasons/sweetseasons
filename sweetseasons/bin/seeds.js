@@ -4,10 +4,10 @@ const bcryptSalt = 10;
 const User = require('../models/User');
 const Group = require('../models/Group');
 const Recipe = require('../models/Recipe');
-
+mongoose.connect('mongodb://localhost/season');
 //VEGGIE
 
-const repices = [
+const recipes = [
   {
     name: 'Peanut Butter Blossoms',
     foodProfile:  'veggie',
@@ -150,15 +150,15 @@ const repices = [
     level: 3,
     points: 50,
     ingredients: [
-    '30 Original Oreo Cookies; crushed into fine crumbs'
-    '1/2 cup (1 stick) unsalted butter; melted'
-    '1 (14 ounce) can sweetened condensed milk'
-    '1/2 cup Heath toffee bits'
-    '1/3 cup salted and roasted peanuts'
-    '1/2 cup pretzels broken into small pieces'
-    '16 Winter Oreo Cookies with Red Vanilla Filling; broken into small pieces'
-    '1 cup red and green M&Ms'
-    '1 bag Nestle Holiday Semi-Sweet Chocolate Morsels with Rf'
+    '30 Original Oreo Cookies; crushed into fine crumbs',
+    '1/2 cup (1 stick) unsalted butter; melted',
+    '1 (14 ounce) can sweetened condensed milk',
+    '1/2 cup Heath toffee bits',
+    '1/3 cup salted and roasted peanuts',
+    '1/2 cup pretzels broken into small pieces',
+    '16 Winter Oreo Cookies with Red Vanilla Filling; broken into small pieces',
+    '1 cup red and green M&Ms',
+    '1 bag Nestle Holiday Semi-Sweet Chocolate Morsels with Rf',
     ],
     preparation: `Preheat oven to 350 degrees Fahrenheit.
     Line a 9x13 baking pan with non-stick aluminum foil.
@@ -1872,3 +1872,13 @@ const repices = [
     price: 50,
   },
 ];
+
+
+
+Recipe.create(recipes, (error, item)=>{
+  if(error){throw error; }
+  item.forEach( (e) =>{
+    console.log(e.imgUrl);
+  });
+  mongoose.connection.close();
+});

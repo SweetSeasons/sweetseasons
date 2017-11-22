@@ -1,0 +1,14 @@
+<h2>recipes</h2>
+<em><%= recipe.name %> | <%= recipe.duration %> | <%= recipe.foodProfile %> | Points for complete: <%= recipe.points %></em>
+<br><br>
+<img src="<%= recipe.imgUrl %>" alt="No deberia haber foto?" style="height:200px">
+<br><br>
+<ul>
+  <% recipe.ingredients.forEach(i => { %>
+    <li><%= i %></li>
+  <% }) %>
+</ul>
+<br><br>
+<p>
+  <%= recipe.preparation %>
+</p>
