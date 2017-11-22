@@ -8,15 +8,12 @@ const userSchema = new Schema({
   points: Number,
   leagues: Number,
   title: String,
+  about: String,
   foodProfile: {
     type: String,
     enum: ['vegan', 'veggie']
   },
-  picture: {
-      name: String,
-      pic_path: String,
-      pic_name: String
-    },
+  photo: {type: String, default: ''},
   friends: [{
     type: Schema.Types.ObjectId,
     ref: 'User'
