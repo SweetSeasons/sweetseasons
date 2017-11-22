@@ -8,6 +8,7 @@ const userSchema = new Schema({
   points: Number,
   leagues: Number,
   title: String,
+  about: String,
   foodProfile: {
     type: String,
     enum: ['vegan', 'veggie']

@@ -26,7 +26,12 @@ authRoutes.post('/', ensureLoggedOut(), (req, res, next) => {
           new User({
             name,
             password: hash,
-            email, foodProfile
+            email,
+            points: 0,
+            leagues: 0,
+            title: 'Beginner',
+            about: '',
+            foodProfile,
           }).save()
             .then(() => {
               res.redirect('/login');
