@@ -1,7 +1,7 @@
 <h2>PROFILE</h2>
-
+<%= user.picture %>
 <h3><%= user.name %> | <%= user.title %></h3>
-<img src="/uploads/<%= user.picture.name %>" alt="Your profile picture!">
+<div><img src="/uploads/picProfile/<%= user.photo %>" alt="I need photo!" style="height:200px"></div>
 <h5>Points: <%= user.points %></h5>
 <h5>Leagues: <%= user.leagues %></h5>
 <h6><em>About me: <%= user.about %></em></h6>

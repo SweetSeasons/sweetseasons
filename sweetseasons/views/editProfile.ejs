@@ -2,10 +2,29 @@
 
 <!--In process-->
 
-<form action="/profile/edit" method="POST">
+<form action="/profile/edit/<%= user._id %>" method="POST" enctype="multipart/form-data">
+  <label for="name">Name</label>
   <input id="name" type="text" name="name" value="<%= user.name %>">
+  <br><br>
+  <label for="photo">Upload your photo!</label>
+  <input type="file" name="photo">
+  <br><br>
+  <label for="email">Email</label>
   <input id="email" type="email" name="email" value="<%= user.email %>">
-  <input id="password" type="password" name="password" value="">
+  <br><br>
+  <label for="about">About me</label>
   <input id="about" type="text" name="about" value="<%= user.about %>">
-  <select name="" id=""></select>
+  <br><br>
+  <label for="foodProfile">Food profile</label>
+  <select id="foodProfile" name="foodProfile" value="">
+    <% if(user.foodProfile == 'vegan'){ %>
+      <option value="vegan" selected="selected">Vegan</option>
+      <option value="veggie">Veggie</option>
+    <% }else{ %>
+      <option value="vegan">Vegan</option>
+      <option value="veggie" selected="selected">Veggie</option>
+    <% } %>
+  </select>
+  <br><br>
+  <button>Edit!</button>
 </form>

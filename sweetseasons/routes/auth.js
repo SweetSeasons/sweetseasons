@@ -39,14 +39,14 @@ authRoutes.post('/', ensureLoggedOut(), (req, res, next) => {
             .catch(error => {
               res.render('signup', {
                 errorMessage: 'Something went wrong!'
-              })
+              });
             });
         }
       })
       .catch(error => {
         res.render('signup', {
           errorMessage: 'The user already exists'
-        })
+        });
       });
   } else{
     res.render('signup', {
