@@ -13,15 +13,15 @@ const pointsSchema = new Schema({
     ref: 'User'
   }],
 
-  result: [{
-    type: Number,
-    score: 0
-  },{
-    pic: {type: String, default: ''}
-  },{
-    timestamps: {createdAt: 'created_at'}
-  }]
-  
+  score: [Number],
+
+  pic: [{
+    type: String,
+    default: ''
+  }],
+
+  timestamps: [{createdAt: 'created_at'}]
+
 });
 
 module.exports = mongoose.model('Point', pointsSchema);
