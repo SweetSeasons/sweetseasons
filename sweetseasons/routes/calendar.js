@@ -4,15 +4,19 @@ const User = require('../models/User');
 const Recipe = require('../models/Recipe');
 
  calendarRoute.get('/', (req, res, next) => {
-  Recipe.find()
+   console.log(req.user.name, req.user.foodProfile);
+   Recipe.find(req.user.foodProfile == 'vegan' ? {foodProfile:req.user.foodProfile} : {})
     .then(all => {
+      all.forEach(v => {
+        console.log(v.name, v.foodProfile);
+      });
       res.render('calendar', {
         all,
         recipes: getValue(all)
       });
     })
     .catch(error => {
-      res.redirect('/');
+      res.redirect('/main');
     });
   });
 
