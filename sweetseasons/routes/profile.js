@@ -9,7 +9,18 @@ profileRoutes.get('/:name', (req, res, next) => {
   //Revisar mañana, para sacar la id correspondiente al amigo
   User.findOne({name: req.params.name})
     .then(user => {
+      console.log('Friends: ' + user.friends);
       if(user !== null){
+        //Cargar todos los amigos y poblarlos
+        User.findOne({name: req.params.name}, 'friends, _id = 0')
+          .populate()
+          .then(friends => {
+            console.log(friends);
+          })
+          .catch(error => {
+            console.log('Mal!');
+          });
+        //Renderización de la vista
         res.render('profile', {
           user, //El usuario de la vista
           userActive: req.user //El usuario activo (el que está en sesión)

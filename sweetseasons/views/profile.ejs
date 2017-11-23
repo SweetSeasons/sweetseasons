@@ -11,5 +11,10 @@
   </ul></p>
 </div>
 <p>About me: <%= user.about %></p>
-<p>You wanna some change?,<br><a href="/profile/edit/<%= user.id %>">Edit your profile!</a></p>
+<% if(userActive.id == user.id){ %>
+  <a href="/profile/edit/<%= user.id %>">You wanna some change?, Edit your profile!</a>
+<% } else{ %>
+   <a href="/profile/add/<%= user.id %>">Wanna be friend of <%= user.name %>? Add to your friend list! </a>
+ <% } %>
+ <a href="/main">Home!</a>
 </div>
