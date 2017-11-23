@@ -1,4 +1,6 @@
-.Ds_Store
+# Dotenv
+.env
+
 # Logs
 logs
 *.log
