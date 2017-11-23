@@ -6,7 +6,7 @@
   <p><%= user.name %> <%= user.title %></p>
   <p>Points: <%= user.points %>  Friends: <ul>
     <% user.friends.forEach(e => { %>
-      <a href="#"><li><%= e %></li></a>
+      <a href="/profile/<%= e.name %>"><li><%= e.name %></li></a>
     <% }) %>
   </ul></p>
 </div>

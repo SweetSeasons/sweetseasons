@@ -6,25 +6,24 @@ const upload = multer({dest: './public/uploads/picProfile'});
 
 profileRoutes.get('/:name', (req, res, next) => {
 
-  //Revisar mañana, para sacar la id correspondiente al amigo
   User.findOne({name: req.params.name})
     .then(user => {
       console.log('Friends: ' + user.friends);
       if(user !== null){
         //Cargar todos los amigos y poblarlos
-        User.findOne({name: req.params.name}, 'friends, _id = 0')
-          .populate()
-          .then(friends => {
-            console.log(friends);
+        User.findOne({name: req.params.name})
+          .populate({path: 'friends'})
+          .then(user => {
+            console.log(user.friends);
+            res.render('profile', {
+              user, //El usuario de la vista
+              userActive: req.user //El usuario activo (el que está en sesión)
+            });
           })
           .catch(error => {
             console.log('Mal!');
           });
         //Renderización de la vista
-        res.render('profile', {
-          user, //El usuario de la vista
-          userActive: req.user //El usuario activo (el que está en sesión)
-        });
       }else{
         res.redirect('/main');
       }
@@ -60,30 +59,41 @@ profileRoutes.post('/edit/:id', upload.single('photo'), (req, res, next) => {
 });
 
 profileRoutes.get('/add/:id', (req, res, next) => {
-  User.findOne({_id: req.user.id})
-    .then(userFinded => {
-      if(!userFinded){
-        User.update({_id:req.user.id}, {$push: {friends: req.params.id}})
-          .then(() => {
-            User.update({_id: req.params.id}, {$push: {friends: req.user.id}})
-              .then(() => {
-                console.log('Enter good!');
-              })
-              .catch(error => {
-                console.log('Something went wrong');
-              });
-            res.redirect(`/profile/${req.user.name}`);
-          })
-          .catch(error => {
-            console.log('Something went wrong!');
+  let id = req.params.id;
+  let addFriend = true;
+      User.findOne({name: req.user.name}, 'friends')
+        .then(user => {
+          console.log(user);
+          user.friends.forEach(f => {
+            if((f.toString()) === id){
+              addFriend = false;
+              return;
+            }
           });
-      } else{
-        res.redirect(`/profile/${req.user.name}`);
-      }
-    })
-    .catch(error => {
-      res.redirect('/main');
+
+          if(addFriend){
+            User.update({_id:req.user.id}, {$push: {friends: req.params.id}})
+                .then(() => {
+                  User.update({_id: req.params.id}, {$push: {friends: req.user.id}})
+                    .then(() => {
+                      console.log('Enter good!');
+                    })
+                    .catch(error => {
+                      console.log('Something went wrong');
+                    });
+                  res.redirect(`/profile/${req.user.name}`);
+                })
+                .catch(error => {
+                  console.log('Something went wrong!');
+                });
+          }else{
+            //Redirección temporal
+            res.redirect(`/profile/${req.user.name}`);
+          }
+        })
+        .catch(error => {
+          console.log('Something went wrong!');
+        });
     });
-});
 
 module.exports = profileRoutes;
