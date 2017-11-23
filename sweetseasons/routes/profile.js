@@ -49,13 +49,29 @@ profileRoutes.post('/edit/:id', upload.single('photo'), (req, res, next) => {
 });
 
 profileRoutes.get('/add/:id', (req, res, next) => {
-  let id = req.params.id;
-  User.update({_id:req.user.id}, {$push: {friends: id}})
-    .then(() => {
-      res.redirect(`/profile/${req.user.name}`);
+  User.findOne({_id: req.user.id})
+    .then(userFinded => {
+      if(!userFinded){
+        User.update({_id:req.user.id}, {$push: {friends: req.params.id}})
+          .then(() => {
+            User.update({_id: req.params.id}, {$push: {friends: req.user.id}})
+              .then(() => {
+                console.log('Enter good!');
+              })
+              .catch(error => {
+                console.log('Something went wrong');
+              });
+            res.redirect(`/profile/${req.user.name}`);
+          })
+          .catch(error => {
+            console.log('Something went wrong!');
+          });
+      } else{
+        res.redirect(`/profile/${req.user.name}`);
+      }
     })
     .catch(error => {
-      console.log('Something went wrong!');
+      res.redirect('/main');
     });
 });
 
