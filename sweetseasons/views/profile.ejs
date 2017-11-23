@@ -1,9 +1,11 @@
-<h2>PROFILE</h2>
-<%= user.picture %>
-<h3><%= user.name %> | <%= user.title %></h3>
-<div><img src="/uploads/picProfile/<%= user.photo %>" alt="I need photo!" style="height:200px"></div>
-<h5>Points: <%= user.points %></h5>
-<h5>Leagues: <%= user.leagues %></h5>
-<h6><em>About me: <%= user.about %></em></h6>
-<br><br>
-<a href="/profile/edit/<%= user.id %>">You wanna some change?, Edit your profile!</a>
+<%- include('partials/navBar.ejs')%>
+<div class="col-xs-12 col-sm-4 container profile">
+  <div class="paragraf">
+  <%= user.picture %>
+  <div class="col-xs-7 col-sm-12"><img src="/uploads/picProfile/<%= user.photo %>" alt="I need photo!" style="height:200px"></div>
+  <p><%= user.name %> <%= user.title %></p>
+  <p>Points: <%= user.points %>  Leagues: <%= user.leagues %></p>
+</div>
+<p>About me: <%= user.about %></p>
+<p>You wanna some change?,<br><a href="/profile/edit/<%= user.id %>">Edit your profile!</a></p>
+</div>

@@ -26,7 +26,7 @@ const Recipe = require('../models/Recipe');
       .then(recipe => {
         res.render('recipes', {
           recipe
-        })
+        });
       })
       .catch(error => {
         res.redirect('/calendar');
