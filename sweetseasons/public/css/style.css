@@ -1,24 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+/*@import url('https://fonts.googleapis.com/css?family=Roboto:100i');*/
 body {
   margin: 0;
   padding: 0;
-}
-
-a {
-  color: #00B7FF;
+  font-family: 'Roboto';
 }
 /*----------------nav navbar----------------*/
-
-
+.navbar, .navbar-expand-lg, .navbar-light, .bg-light {
+  box-shadow: 0px 3px 5px 0px rgba(200,202,204,1);
+}
+.container{
+  clear: both;
+}
+.navbar-light .navbar-nav .nav-link {
+    /* color: rgba(0,0,0,.5); */
+    font-size: 1.3em;
+}
 /*----------------signUp page and login----------------*/
 .signUp .col-sm-9, .login .col-sm-6{
   color: #ffff;
   background: #9BC7D0;
+  box-shadow: 3px 4px 5px 0px rgba(155,199,208,1);
   margin: 50px auto;
   padding: 4%;
 }
-.signUp h1{
-  font-size: 2em;
+.signUp h1, .calendarHead h1, .recipes h2{
+  font-size: 2.5em;
+  color: #E47367;
   margin-bottom: 20px;
+  font-family: 'Pacifico', cursive;
 }
 .signUp h2{
   margin-bottom: 20px;
@@ -30,9 +41,14 @@ a {
   float: right;
   width: 35%;
 }
-.col-sm-6 .btn-info{
+.signUp .btn-info {
   width: 50%;
   margin: 20px 25%;
+}
+.btn-info {
+    color: #fff;
+    background-color: #E47367;
+    border-color: #EED1AE;
 }
 
 /*----------------Main----------------*/
@@ -40,15 +56,26 @@ a {
 height: 200px;
 text-align: center;
 }
+.main {
+display: flex;
+align-items: center;
+justify-content: center;
+}
 .main:first-of-type{
-background: #69818C;
+background: #FFE192;
 background-image: url('../img/donut.png');
 background-repeat: no-repeat;
 background-position: right;
 background-size: auto;
+filter: grayscale(100%);
+color: grey;
+}
+.main:first-of-type p{
+  font-size: 4em;
+  font-family: 'Pacifico', cursive;
 }
 .main:nth-of-type(2){
-background: #BEB6CF;
+background: #91B5C6;
 background-image: url('../img/bowl.png');
 background-repeat: no-repeat;
 background-position: left;
@@ -68,15 +95,30 @@ margin-left: 20%;
 .clearfix{
   clear: both;
 }
-.main a{
-  font-size: 3em;
-  color: #fff;
-}
 .container-fluid div:nth-child(3){
   text-align: center;
   margin-top:20px;
 }
-
+.maindiv{
+  float: right;
+  clear: both;
+  margin: 20px 2%;
+  font-family: 'Pacifico', cursive;
+}
+.maindiv>div{
+  font-family: 'Roboto';
+}
+.maindiv h4{
+  color: #CA5B3E;
+  display: inline-block;
+  font-size: 1em;
+}
+.maindiv img{
+display: inline-block;
+}
+.row {
+    clear: both;
+}
 /*----------------Calendar----------------*/
 .calendar{
   text-align: center;
@@ -94,19 +136,118 @@ margin-left: 20%;
   margin: 20px 0 20px 5%;
   height: 100px;
 }
+.calendar .calendarHead p{
+  font-size: 0.4em;
+}
+/*----------------profile----------------*/
+.profile{
+  text-align: center;
+  margin-top: 50px;
+  padding: 2%;
+}
+.profile>div p:first-of-type{
+  font-size: 2em;
+  font-family: 'Pacifico', cursive;
+  color: #E47367;
+}
+.profile .paragraf p:nth-of-type(2){
+  background: #41818D;
+  color: #ffff;
+  display: inline-block;
+  padding:2% 5%;
+}
+.profile>p{
+text-align: left;
+}
+.profile>p:last-of-type{
+text-align: center;
+}
+.profileName{
+  font-size: 2em;
+}
 
+/*----------------contact----------------*/
+
+.contact{
+  position: relative;
+  width: 50%;
+}
+
+.contact .image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.contact .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.contact:hover .overlay {
+  opacity: 1;
+}
+
+.contact .text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+/*----------------recipes----------------*/
+.recipes section:nth-of-type(2) ul li{
+  list-style: none;
+  font-size: 1.5em;
+  font-size: 1.5em;
+  padding-bottom: 5px;
+  border-bottom: 1px solid red;
+}
+.recipes section:nth-of-type(3){
+  margin-top: 20px;
+}
+.recipes section:first-of-type{
+  text-align: center;
+}
+.recipes h2{
+  font-size: 4em;
+  margin-bottom: 50px;
+}
+/*----------------a & button----------------*/
+
+a, .navbar-light .navbar-nav .nav-link{
+  text-decoration: none;
+  color: #E47367;
+}
+.main a{
+  font-size: 4em;
+  font-family: pacifico;
+}
 .day a{
   color: #EED1AE;
 }
-
-
-/*----------------a----------------*/
-
-a{
-  text-decoration: none;
-  color: #69818C;
+.profile a{
+  font-size: 1.5em;
 }
 a:hover{
   text-decoration: none;
-  color: #FFFF;
+  color: #41818D;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #41818D;
+}
+.btn-info:hover{
+  background: #EED1AE;
 }
