@@ -1,6 +1,18 @@
   <%- include('partials/navBar.ejs')%>
 
   <div class="container-fluid recipes">
+
+    <div class="maindiv">
+      <img src="/uploads/picProfile/<%= user.photo %>" alt="photo" style="height:50px">
+      <h4>Hello <%= user.name %>!</h4>
+      <div>
+        <a href="/profile/<%= user.name %>">Your Profile</a> or
+        <a href="/login">Log Out</a>
+      </div>
+    </div>
+
+
+
     <section>
       <h2>recipes</h2>
       <img src="<%= recipe.imgUrl %>" alt="No deberia haber foto?" style="height:200px">

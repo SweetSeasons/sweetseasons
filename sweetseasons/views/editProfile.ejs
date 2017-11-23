@@ -1,41 +1,4 @@
 <%- include('partials/navBar.ejs')%>
-<!-- <div class="container signUp">
-  <div class="row">
-    <div class="col-sm-9">
-      <div class="row">
-        <div class="col-xs-4 col-sm-6">
-          <h2>Edit your profile</h2>
-          <form action="/profile/edit/<%= user._id %>" method="POST" enctype="multipart/form-data">
-            <label for="name">Name</label>
-            <input class="form-control" id="name" type="text" name="name" value="<%= user.name %>">
-            <br><br>
-            <label for="photo">Upload your photo!</label>
-            <input class="form-control" type="file" name="photo">
-            <br><br>
-            <label for="email">Email</label>
-            <input class="form-control" id="email" type="email" name="email" value="<%= user.email %>">
-            <br><br>
-            <label for="about">About me</label>
-            <input class="form-control" id="about" type="text" name="about" value="<%= user.about %>">
-            <br><br>
-            <label for="foodProfile">Food profile</label>
-            <select id="foodProfile" name="foodProfile" value="">
-              <% if(user.foodProfile == 'vegan'){ %>
-                <option value="vegan" selected="selected">Vegan</option>
-                <option value="veggie">Veggie</option>
-              <% }else{ %>
-                <option value="vegan">Vegan</option>
-                <option value="veggie" selected="selected">Veggie</option>
-              <% } %>
-            </select>
-            <br><br>
-            <button>Edit!</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 <div class="col-xs-12 col-sm-4 container editProfile">
   <h2>Edit your profile</h2>
   <form action="/profile/edit/<%= user._id %>" method="POST" enctype="multipart/form-data">

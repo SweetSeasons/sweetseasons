@@ -29,7 +29,8 @@ const Recipe = require('../models/Recipe');
     Recipe.findById(id)
       .then(recipe => {
         res.render('recipes', {
-          recipe
+          recipe,
+          user:req.user
         });
       })
       .catch(error => {

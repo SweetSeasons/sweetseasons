@@ -4,12 +4,15 @@
   <%= user.picture %>
   <div class="col-xs-7 col-sm-12"><img src="/uploads/picProfile/<%= user.photo %>" alt="I need photo!" style="height:200px"></div>
   <p><%= user.name %> <%= user.title %></p>
-  <p>Points: <%= user.points %>  Friends: <ul>
+  <p>Points: <%= user.points %></p>
+</div>
+<p>About me: <%= user.about %></p>
+<p>Friends:
+  <ul>
     <% user.friends.forEach(e => { %>
       <a href="#"><li><%= e %></li></a>
     <% }) %>
-  </ul></p>
-</div>
-<p>About me: <%= user.about %></p>
+  </ul>
+</p>
 <p>You wanna some change?,<br><a href="/profile/edit/<%= user.id %>">Edit your profile!</a></p>
 </div>
