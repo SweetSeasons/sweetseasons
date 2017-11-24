@@ -64,9 +64,15 @@ function getValue(all) {
           user:req.user
         });
       })
+<<<<<<< HEAD
     .catch(error => {
       res.redirect('/calendar');
     });
+=======
+      .catch(error => {
+        res.redirect('/calendar');
+      });
+>>>>>>> 3b1c858252f89f2715326f7fcd8d24216b5d1b98
 });
 
 module.exports = calendarRoute;
