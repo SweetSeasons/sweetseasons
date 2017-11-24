@@ -116,15 +116,11 @@ profileRoutes.get('/add/:id', (req, res, next) => {
     .catch(error => {
       console.log('Something went wrong!');
     });
-<<<<<<< HEAD
 });
-=======
-  });
->>>>>>> 3b1c858252f89f2715326f7fcd8d24216b5d1b98
     //Antes de hacer actualización hay que añadir la id de la
     //receta en la colección, para poder saber cuál hay que actualizar
   profileRoutes.post('/:name/upload', upload.single('photo'), (req, res, next) => {
-    Score.update({})
+    Score.update({});
   });
 
 module.exports = profileRoutes;
