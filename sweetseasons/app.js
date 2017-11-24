@@ -11,7 +11,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
-require('dotenv').config();
+require('dotenv').load();
 
 const authRoute = require('./routes/auth');
 const profileRoute = require('./routes/profile');

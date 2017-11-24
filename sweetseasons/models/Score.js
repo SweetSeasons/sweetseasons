@@ -19,10 +19,6 @@ const scoreSchema = new Schema({
     type: String,
     default: ''
   }],
-<<<<<<< HEAD
-=======
-
->>>>>>> 3b1c858252f89f2715326f7fcd8d24216b5d1b98
   updatedAt: [{
      type : Date,
      default : Date.now

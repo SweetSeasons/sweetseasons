@@ -4,6 +4,7 @@ const bcryptSalt = 10;
 const User = require('../models/User');
 const Group = require('../models/Group');
 const Recipe = require('../models/Recipe');
+require('dotenv').load();
 mongoose.connect('mongodb://localhost/season');
 //VEGGIE
 
