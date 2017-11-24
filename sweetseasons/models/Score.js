@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const pointsSchema = new Schema({
+const scoreSchema = new Schema({
 
   recipe: {
     type: Schema.Types.ObjectId,
@@ -20,8 +20,11 @@ const pointsSchema = new Schema({
     default: ''
   }],
 
-  timestamps: [{createdAt: 'created_at'}]
+  updatedAt: [{
+     type : Date,
+     default : Date.now
+   }]
 
 });
 
-module.exports = mongoose.model('Point', pointsSchema);
+module.exports = mongoose.model('Score', scoreSchema);

@@ -9,6 +9,15 @@
         <a href="/profile/<%= user.name %>">Your Profile</a> or
         <a href="/login">Log Out</a>
       </div>
+      <!-- Temporal, subida de foto -->
+      <form action="/profile/<%= user.name %>/upload" method="POST" enctype="multipart/form-data">
+        <br>
+        <label for="photo">Upload your photo!</label>
+        <input class="filePhoto" type="file" name="photo">
+        <br>
+        <button>Upload!</button>
+      </form>
+      <!-- ######################## -->
     </div>
 
 
