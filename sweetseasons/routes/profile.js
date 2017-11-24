@@ -2,14 +2,8 @@ const multer = require('multer');
 const express = require('express');
 const profileRoutes = express.Router();
 const User = require('../models/User');
-<<<<<<< HEAD
-const upload = multer({
-  dest: './public/uploads/picProfile'
-});
-=======
 const Score = require('../models/Score');
 const upload = multer({dest: './public/uploads/picProfile'});
->>>>>>> 6cfc7ffd7b4ec3db1a4a1c8a66a645edc53f0f81
 
 profileRoutes.get('/:name', (req, res, next) => {
 
@@ -36,12 +30,7 @@ profileRoutes.get('/:name', (req, res, next) => {
           .catch(error => {
             console.log('Mal!');
           });
-<<<<<<< HEAD
-        //Renderización de la vista
-      } else {
-=======
       }else{
->>>>>>> 6cfc7ffd7b4ec3db1a4a1c8a66a645edc53f0f81
         res.redirect('/main');
       }
     })
@@ -126,14 +115,11 @@ profileRoutes.get('/add/:id', (req, res, next) => {
     .catch(error => {
       console.log('Something went wrong!');
     });
-<<<<<<< HEAD
 });
-=======
     //Antes de hacer actualización hay que añadir la id de la
     //receta en la colección, para poder saber cuál hay que actualizar
   profileRoutes.post('/:name/upload', upload.single('photo'), (req, res, next) => {
     Score.update({})
   });
->>>>>>> 6cfc7ffd7b4ec3db1a4a1c8a66a645edc53f0f81
 
 module.exports = profileRoutes;
