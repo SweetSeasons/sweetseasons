@@ -27,15 +27,6 @@ function getValue(all) {
   return ~~(Math.random() * all.length);
 };
 
-<<<<<<< HEAD
-calendarRoute.get('/recipe/:id', (req, res, next) => {
-  let id = req.params.id;
-  Recipe.findById(id)
-    .then(recipe => {
-      res.render('recipes', {
-        recipe,
-        user: req.user
-=======
   calendarRoute.get('/recipe/:id', (req, res, next) => {
     let id = req.params.id;
     if(req.user.recipe){
@@ -75,12 +66,7 @@ calendarRoute.get('/recipe/:id', (req, res, next) => {
       })
       .catch(error => {
         res.redirect('/calendar');
->>>>>>> 6cfc7ffd7b4ec3db1a4a1c8a66a645edc53f0f81
       });
-    })
-    .catch(error => {
-      res.redirect('/calendar');
-    });
 });
 
 module.exports = calendarRoute;
