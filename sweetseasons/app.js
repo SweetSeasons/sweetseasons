@@ -17,7 +17,9 @@ const authRoute = require('./routes/auth');
 const profileRoute = require('./routes/profile');
 const calendarRoute = require('./routes/calendar');
 
-mongoose.connect(process.env.MONGO_URL, {useMongoclient: true});
+mongoose.connect(process.env.MONGO_URL, {
+  useMongoclient: true
+});
 
 const app = express();
 
@@ -29,7 +31,9 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
@@ -39,7 +43,9 @@ app.use(session({
   secret: process.env.SUPER_SECRET,
   resave: true,
   saveUninitialized: true,
-  store: new MongoStore( { mongooseConnection: mongoose.connection })
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection
+  })
 }));
 
 app.use(flash());

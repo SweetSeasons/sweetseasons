@@ -1,47 +1,45 @@
-  <% if(errorMessage){ %>
-    <h4><%= errorMessage %></h4>
+<% if(errorMessage){ %>
+  <h4><%= errorMessage %></h4>
   <% } %>
-  <%- include('partials/navBar.ejs')%>
-  <div class="container signUp">
-    <div class="row">
-      <div class="col-sm-9">
+      <div class="container signUp">
         <div class="row">
-          <div class="col-xs-8 col-sm-6">
-            <div class = "clearfix" >
-              <img src="../img/signUp.png" alt="">
-              <h1>Sweet Season</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus urna ex,
-                vulputate laoreet enim eget, aliquet tincidunt purus. Nam dolor ex, aliquet
-                non posuere ac, ultricies imperdiet dolor. Sed pellentesque dolor nec urna
-                efficitur, non efficitur quam placerat. Vestibulum fermentum quis turpis id port
-              </p>
-            </div>
-            <h3>U have an account? Then <a href="/login">login!</a></h3>
-          </div>
-          <div class="col-xs-4 col-sm-6">
-            <h2>Sign Up</h2>
-            <form action="/" method="POST">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input class="form-control" id="name" type="text" name="name" placeholder="Your name">
+          <div class="col-sm-9">
+            <div class="row">
+              <div class="col-xs-8 col-sm-6">
+                <div class="clearfix">
+                  <img src="../img/signUp.png" alt="">
+                  <h1>Sweet Season</h1>
+                  <p>Welcome to Sweet Season!<br>
+                  Are you ready to win all of your friends and family cooking
+                  the proposal receipt before all of them?? <br>
+                  Let's see it!</p>
+                </div>
+                <h3>U have an account? Then <a href="/login">login!</a></h3>
               </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input class="form-control" id="password" type="password" name="password" placeholder="Your password">
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input class="form-control" id="email" type="email" name="email" placeholder="Your email">
-              </div>
-              <label class="mr-sm-2" for="foodProfile">Food Profile</label><br>
-                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="foodProfile">
+              <div class="col-xs-4 col-sm-6">
+                <h2>Sign Up</h2>
+                <form action="/" method="POST">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" id="name" type="text" name="name" placeholder="Your name">
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" id="password" type="password" name="password" placeholder="Your password">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" id="email" type="email" name="email" placeholder="Your email">
+                  </div>
+                  <label class="mr-sm-2" for="foodProfile">Food Profile</label><br>
+                  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="foodProfile">
                   <option value="vegan">vegan</option>
                   <option value="veggie">veggie</option>
                 </select><br>
-                <button class="btn btn-info">Create!</button>
-            </form>
+                  <button class="btn btn-info">Create!</button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>

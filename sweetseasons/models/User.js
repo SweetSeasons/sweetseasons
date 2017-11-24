@@ -13,7 +13,10 @@ const userSchema = new Schema({
     type: String,
     enum: ['vegan', 'veggie']
   },
-  photo: {type: String, default: ''},
+  photo: {
+    type: String,
+    default: ''
+  },
   friends: [{
     type: Schema.Types.ObjectId,
     ref: 'User'

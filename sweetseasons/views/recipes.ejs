@@ -1,20 +1,15 @@
-  <%- include('partials/navBar.ejs')%>
-
-  <div class="container-fluid recipes">
-
-    <div class="maindiv">
-      <img src="/uploads/picProfile/<%= user.photo %>" alt="photo" style="height:50px">
-      <h4>Hello <%= user.name %>!</h4>
-      <div>
-        <a href="/profile/<%= user.name %>">Your Profile</a> or
-        <a href="/login">Log Out</a>
-      </div>
+<div class="container-fluid recipes">
+  <div class="maindiv">
+    <img src="/uploads/picProfile/<%= user.photo %>" alt="photo" style="height:50px">
+    <h4>Hello <%= user.name %>!</h4>
+    <div>
+      <a href="/profile/<%= user.name %>">Your Profile</a> or
+      <a href="/login">Log Out</a>
     </div>
-
-
-
-    <section>
-      <h2>recipes</h2>
+  </div>
+  <section>
+    <div class="imgRecipes">
+      <h2>Recipes</h2>
       <img src="<%= recipe.imgUrl %>" alt="No deberia haber foto?" style="height:200px">
       <p>
         <%= recipe.name %> |
@@ -22,19 +17,20 @@
             <%= recipe.foodProfile %> | Points for complete:
               <%= recipe.points %>
       </p>
-    </section>
-    <section>
-      <ul>
-        <% recipe.ingredients.forEach(i => { %>
-          <li>
-            <%= i %>
-          </li>
-          <% }) %>
-      </ul>
-    </section>
-    <section>
-      <p>
-        <%= recipe.preparation %>
-      </p>
-    </section>
-  </div>
+    </div>
+  </section>
+  <section>
+    <ul>
+      <% recipe.ingredients.forEach(i => { %>
+        <li><img src="/img/cookie.jpg" alt="cookie">
+          <%= i %>
+        </li>
+        <% }) %>
+    </ul>
+  </section>
+  <section>
+    <p>
+      <%= recipe.preparation %>
+    </p>
+  </section>
+</div>

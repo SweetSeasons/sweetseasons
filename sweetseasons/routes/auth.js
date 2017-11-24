@@ -4,7 +4,10 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 const passport = require('passport');
-const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
+const {
+  ensureLoggedIn,
+  ensureLoggedOut
+} = require('connect-ensure-login');
 
 //Controlador para la página de inicio y Signup
 authRoutes.get('/', (req, res, next) => {
@@ -15,24 +18,31 @@ authRoutes.get('/', (req, res, next) => {
 
 //Post para recoger los datos del formulario de Signup
 authRoutes.post('/', ensureLoggedOut(), (req, res, next) => {
-  const {name, password, email, foodProfile} = req.body;
-  if(name !== '' && password !== '' && email !== ''){
-    User.findOne({name}, 'name')
+  const {
+    name,
+    password,
+    email,
+    foodProfile
+  } = req.body;
+  if (name !== '' && password !== '' && email !== '') {
+    User.findOne({
+        name
+      }, 'name')
       .then(userFinded => {
-        if(userFinded === null){
+        if (userFinded === null) {
           const salt = bcrypt.genSaltSync(bcryptSalt);
           const hash = bcrypt.hashSync(password, salt);
 
           new User({
-            name,
-            password: hash,
-            email,
-            points: 0,
-            leagues: 0,
-            title: 'Beginner',
-            about: '',
-            foodProfile,
-          }).save()
+              name,
+              password: hash,
+              email,
+              points: 0,
+              leagues: 0,
+              title: 'Beginner',
+              about: '',
+              foodProfile,
+            }).save()
             .then(() => {
               res.redirect('/login');
             })
@@ -48,7 +58,7 @@ authRoutes.post('/', ensureLoggedOut(), (req, res, next) => {
           errorMessage: 'The user already exists'
         });
       });
-  } else{
+  } else {
     res.render('signup', {
       errorMessage: 'Fill all fields!'
     });
@@ -77,7 +87,7 @@ authRoutes.get('/main', ensureLoggedIn(), (req, res, next) => {
 
 authRoutes.get('/logout', ensureLoggedIn(), (req, res, next) => {
   req.logout();
-  req.session = null; // --> Esto hay que cambiarlo
+  req.session = null;
   res.redirect('/login');
 });
 

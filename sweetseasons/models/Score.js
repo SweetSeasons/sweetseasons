@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const pointsSchema = new Schema({
-
   recipe: {
     type: Schema.Types.ObjectId,
     ref: 'Recipe'
@@ -13,14 +12,16 @@ const pointsSchema = new Schema({
     ref: 'User'
   }],
 
-  score: [Number],
+  points: [Number],
 
   pic: [{
     type: String,
     default: ''
   }],
 
-  timestamps: [{createdAt: 'created_at'}]
+  timestamps: [{
+    createdAt: 'created_at'
+  }]
 
 });
 

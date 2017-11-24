@@ -2,17 +2,25 @@ const multer = require('multer');
 const express = require('express');
 const profileRoutes = express.Router();
 const User = require('../models/User');
-const upload = multer({dest: './public/uploads/picProfile'});
+const upload = multer({
+  dest: './public/uploads/picProfile'
+});
 
 profileRoutes.get('/:name', (req, res, next) => {
 
-  User.findOne({name: req.params.name})
+  User.findOne({
+      name: req.params.name
+    })
     .then(user => {
       console.log('Friends: ' + user.friends);
-      if(user !== null){
+      if (user !== null) {
         //Cargar todos los amigos y poblarlos
-        User.findOne({name: req.params.name})
-          .populate({path: 'friends'})
+        User.findOne({
+            name: req.params.name
+          })
+          .populate({
+            path: 'friends'
+          })
           .then(user => {
             console.log(user.friends);
             res.render('profile', {
@@ -24,7 +32,7 @@ profileRoutes.get('/:name', (req, res, next) => {
             console.log('Mal!');
           });
         //Renderización de la vista
-      }else{
+      } else {
         res.redirect('/main');
       }
     })
@@ -35,12 +43,13 @@ profileRoutes.get('/:name', (req, res, next) => {
 
 profileRoutes.get('/edit/:id', (req, res, next) => {
   res.render('editProfile', {
-    user:req.user
+    user: req.user
   });
 });
 
 profileRoutes.post('/edit/:id', upload.single('photo'), (req, res, next) => {
-  let id = req.params.id, photo = '';
+  let id = req.params.id,
+    photo = '';
   req.file ? photo = req.file.filename : photo = req.user.photo;
   const newData = {
     name: req.body.name,
@@ -51,49 +60,63 @@ profileRoutes.post('/edit/:id', upload.single('photo'), (req, res, next) => {
   };
 
   User.findByIdAndUpdate(id, newData)
-      .then(() => {
-        res.redirect(`/profile/${req.user.name}`);
-      }).catch((error) => {
-        return next(error);
-      });
+    .then(() => {
+      res.redirect(`/profile/${req.user.name}`);
+    }).catch((error) => {
+      return next(error);
+    });
 });
 
 profileRoutes.get('/add/:id', (req, res, next) => {
   let id = req.params.id;
   let addFriend = true;
-      User.findOne({name: req.user.name}, 'friends')
-        .then(user => {
-          console.log(user);
-          user.friends.forEach(f => {
-            if((f.toString()) === id){
-              addFriend = false;
-              return;
-            }
-          });
+  User.findOne({
+      name: req.user.name
+    }, 'friends')
+    .then(user => {
+      console.log(user);
+      user.friends.forEach(f => {
+        if ((f.toString()) === id) {
+          addFriend = false;
+          return;
+        }
+      });
 
-          if(addFriend){
-            User.update({_id:req.user.id}, {$push: {friends: req.params.id}})
-                .then(() => {
-                  User.update({_id: req.params.id}, {$push: {friends: req.user.id}})
-                    .then(() => {
-                      console.log('Enter good!');
-                    })
-                    .catch(error => {
-                      console.log('Something went wrong');
-                    });
-                  res.redirect(`/profile/${req.user.name}`);
-                })
-                .catch(error => {
-                  console.log('Something went wrong!');
-                });
-          }else{
-            //Redirección temporal
+      if (addFriend) {
+        User.update({
+            _id: req.user.id
+          }, {
+            $push: {
+              friends: req.params.id
+            }
+          })
+          .then(() => {
+            User.update({
+                _id: req.params.id
+              }, {
+                $push: {
+                  friends: req.user.id
+                }
+              })
+              .then(() => {
+                console.log('Enter good!');
+              })
+              .catch(error => {
+                console.log('Something went wrong');
+              });
             res.redirect(`/profile/${req.user.name}`);
-          }
-        })
-        .catch(error => {
-          console.log('Something went wrong!');
-        });
+          })
+          .catch(error => {
+            console.log('Something went wrong!');
+          });
+      } else {
+        //Redirección temporal
+        res.redirect(`/profile/${req.user.name}`);
+      }
+    })
+    .catch(error => {
+      console.log('Something went wrong!');
     });
+});
 
 module.exports = profileRoutes;

@@ -1,24 +1,35 @@
-<%- include('partials/navBar.ejs')%>
 <div class="col-xs-12 col-sm-4 container profile">
-  <div class="paragraf">
-  <%= user.picture %>
-  <div class="col-xs-7 col-sm-12"><img src="/uploads/picProfile/<%= user.photo %>" alt="I need photo!" style="height:200px"></div>
-  <p><%= user.name %> <%= user.title %></p>
-  <p>Points: <%= user.points %></p>
-</div>
-<p>About me: <%= user.about %></p>
-<p>Friends:
-  <ul>
-    <% user.friends.forEach(e => { %>
-      <a href="/profile/<%= e.name %>"><li><%= e.name %></li></a>
-    <% }) %>
-  </ul></p>
-</div>
-<p>About me: <%= user.about %></p>
-<% if(userActive.id == user.id){ %>
-  <a href="/profile/edit/<%= user.id %>">You wanna some change?, Edit your profile!</a>
-<% } else{ %>
-   <a href="/profile/add/<%= user.id %>">Wanna be friend of <%= user.name %>? Add to your friend list! </a>
- <% } %>
- <a href="/main">Home!</a>
-</div>
+    <div class="paragraf">
+      <%= user.picture %>
+        <div class="col-xs-7 col-sm-12"><img src="/uploads/picProfile/<%= user.photo %>" alt="I need photo!" style="height:200px"></div>
+        <p class="userName">
+          <%= user.name %> |
+            <%= user.title %>
+        </p>
+        <p class="white"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>Points:
+          <%= user.points %>
+        </p>
+    </div>
+    <div class="friends">
+      <p class="white"><i class="fa fa-star" aria-hidden="true"></i>Friends:</p>
+      <ul>
+        <% user.friends.forEach(e => { %>
+          <a href="/profile/<%= e.name %>">
+            <li>
+              <%= e.name %>
+            </li>
+          </a>
+          <% }) %>
+      </ul>
+    </div>
+    <p class="white">About me:
+      <%= user.about %>
+    </p>
+    <div>
+      <% if(userActive.id == user.id){ %>
+        <a href="/profile/edit/<%= user.id %>">Edit your profile!</a>
+        <% } else{ %>
+          <a href="/profile/add/<%= user.id %>">Wanna be friend of <%= user.name %>? Add to your friend list! </a>
+          <% } %>
+    </div>
+  </div>

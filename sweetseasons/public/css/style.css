@@ -69,6 +69,7 @@ background-position: right;
 background-size: auto;
 filter: grayscale(100%);
 color: grey;
+height: 300px;
 }
 .main:first-of-type p{
   font-size: 4em;
@@ -80,6 +81,7 @@ background-image: url('../img/bowl.png');
 background-repeat: no-repeat;
 background-position: left;
 background-size: contain;
+height: 300px;
 }
 .main:first-of-type img, .main:last-of-type img{
 width: 14%;
@@ -144,18 +146,19 @@ display: inline-block;
   text-align: center;
   margin-top: 50px;
   padding: 2%;
+  background: #9BC7D0;
 }
-.profile>div p:first-of-type{
+.profile .userName{
   font-size: 2em;
   font-family: 'Pacifico', cursive;
   color: #E47367;
 }
-.profile .paragraf p:nth-of-type(2){
+/*.profile .paragraf p:nth-of-type(2), {
   background: #41818D;
   color: #ffff;
   display: inline-block;
   padding:2% 5%;
-}
+}*/
 .profile>p{
 text-align: left;
 }
@@ -165,47 +168,17 @@ text-align: center;
 .profileName{
   font-size: 2em;
 }
-
-/*----------------contact----------------*/
-
-.contact{
-  position: relative;
-  width: 50%;
+.fa-star{
+  color: yellow;
+  margin-right: 2%;
 }
-
-.contact .image {
-  display: block;
-  width: 100%;
-  height: auto;
+.fa-arrow-circle-right{
+  color:#F35CC2;
+  margin-right: 2%;
 }
-
-.contact .overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: #008CBA;
-}
-
-.contact:hover .overlay {
-  opacity: 1;
-}
-
-.contact .text {
+.profile .white{
   color: white;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
 }
-
 /*----------------recipes----------------*/
 .recipes section:nth-of-type(2) ul li{
   list-style: none;
@@ -218,15 +191,25 @@ text-align: center;
   margin-top: 20px;
 }
 .recipes section:first-of-type{
-  text-align: center;
+margin: 0 auto;
 }
 .recipes h2{
   font-size: 4em;
   margin-bottom: 50px;
 }
+.imgRecipes{
+  width: 40%;
+  text-align: center;
+  margin: 0 auto;
+}
+.imgRecipes p{
+  margin-top: 10px;
+}
 
 /*----------------Footer----------------*/
 .footer{
+  position: fixed;
+  bottom: 0;
   text-align: center;
   background: #9BC7D0;
   color: #ffff;

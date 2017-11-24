@@ -1,16 +1,17 @@
-<%- include('partials/navBar.ejs')%>
 <div class="container-fluid">
-<div class="maindiv">
-  <img src="/uploads/picProfile/<%= user.photo %>" alt="photo" style="height:50px">
-  <h4>Hello <%= user.name %>!</h4>
-  <div>
-    <a href="/profile/<%= user.name %>">Your Profile</a> or
-    <a href="/login">Log Out</a>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12 col-md-12 clearfix main"><p>Single, coming soon</p></div>
-  <div class="col-xs-12 col-md-12 clearfix main"><a href="/calendar">Season</a></div>
-</div>
+    <div class="maindiv">
+      <img src="/uploads/picProfile/<%= user.photo %>" alt="photo" style="height:50px">
+      <h4>Hello <%= user.name %>!</h4>
+      <div>
+        <a href="/profile/<%= user.name %>">Your Profile</a> or
+        <a href="/login">Log Out</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-12 clearfix main">
+        <p>Single, coming soon</p>
+      </div>
+      <div class="col-xs-12 col-md-12 clearfix main"><a href="/calendar">Season</a></div>
+    </div>
 
-</div>
+  </div>
